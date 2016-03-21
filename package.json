@@ -1,0 +1,22 @@
+{
+  "name": "nagual",
+  "version": "0.0.2",
+  "description": "Redirect all HTTP(S) traffic from application to a single server and fakes some of the responses based on rules",
+  "author": "Emanuil Slavov <emo@komfo.com>",
+
+
+  "dependencies": {
+    "pem": "1.8.1",
+    "node-cache": "3.0.0",
+    "faker": "3.0.1",
+    "forever": "0.15.1",
+    "esprima": "2.7.1",
+    "chai": "3.4.1",
+    "eslint": "1.10.3",
+    "jasmine": "2.4.1",
+    "node-statsd": "0.1.1",
+    "dateformat": "1.0.12"
+  },
+
+  "license": "MIT"
+}
