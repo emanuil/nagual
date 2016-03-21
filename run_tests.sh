@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# check the sourse atainst eslint rules
+# check the sourse against eslint rules
 ./node_modules/eslint/bin/eslint.js -c tests/.eslintrc.json .
 
-# check the stub definitions for problems
+# check the stub definitions for problems that can cause exceptions
 node ./tests/check_stubs.js
 
 # run the unit tests
