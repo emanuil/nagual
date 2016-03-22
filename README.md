@@ -1,20 +1,9 @@
-This is a simulator to sniff all HTTPS traffic from/to our test environment. For automation testing purposes some of
-the traffic that's going to the social networks, need not reach them. Instead we need to simulate an actual response.
-First we did this internally in PHP based on social network tokens or on the environment where the code is running.
-However with all the 3rd party external services, this soon became unmaintainable task. This solution does not require
-any code changes. It only needs to add a trusted root certificate to web-tier and the workers, and also a modification
- /etc/hosts file.
+## What is this?
 
-Currently the simulator for Zendesk is working, and we're in testing phase. The next simulators will be for:
-  * Facebook
-  * Twitter
-  * LinkedIn
-  * Google Plus
-  * Instagram
-  * YouTube
-  * Rackspace CDN
-  * Later, maybe some of the listening providers
+This is a standalone HTTP server created to simulate various responses as if they are returned by a third party web service APIs. For example, the simulator can be configured to act as api.twitter.com or graph.facebook.com without your application knowing the difference. Its primary use is for functional (manual and automated) testing. Its secondary uses are monitoring and performance/stress testing.
 
-Ideally no internal services should be simulated - e.g. Listening, Video Service, Tailer, API integrations, ETCD,
- logstash, statsd. Since they are under our control, they need to be real, installed on containers when the automation
- tests are running.
+## Why create it?
+
+If your application uses any external resources, you’re relying on them constantly being online and responsive so that your tests are passing 100%. If the Internet is down, or slow, your tests will fail. If the external service throttles your requests, after you reach the daily limit, your tests will fail. If you have to manually renew expired credentials, your tests will fail. Also note that some of the responses coming from external services cannot be easily triggered. These include internal server errors, timeout even sending mangled data. In short, your high level tests (everything other than unit tests) have lots of reasons of moving parts and thus reasons to fail.
+
+This simulator was created as a way to overcome the obstacles described above. You’ll have full control over your high level tests and they will become more stable and reliable.
