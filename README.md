@@ -24,15 +24,15 @@ To serve our purposes we had to fulfill 9 key requirements
 
 There are various tools today that can perform HTTP simulation (some of the commercial vendors are calling it “service virtualization”). At the time of the creation of Nagual, none of the available tools supported all of the 9 key requirement. Bellow you can find a table comparing all the actively supported open source HTTP simulation tools. In case Naual does not fit your needs, try one of the listed tools.
 
-| Tools      | Standalone | Fake SSL certs |
-| ---------- | ---------- | -------------- |
-| Stubby4J   | yes        | yes           |
-| WireMock   | yes        | yes |
-| Wilma      | yes        | no |
-| soapUI     | yes        | no |
-| betamax    | no         | yes |
-| MockServer | yes        | yes |
-| VCR        | no         | yes |
-| mounteback | yes        | no |
-| Hoverfly   | yes        | no |
-| Mirage     | yes        | no |
+| Tools      | Standalone | Fake SSL certs | Transparent |
+| ---------- | ---------- | -------------- | ----------- |
+| Stubby4J   | yes        | yes            | no          |
+| WireMock   | yes        | yes            | yes         |
+| Wilma      | yes        | no             | yes         |
+| soapUI     | yes        | no             | no          |
+| betamax    | no         | yes            | yes         |
+| MockServer | yes        | yes            | no          |
+| VCR        | no         | yes            | yes         |
+| mounteback | yes        | no             | no          |
+| Hoverfly   | yes        | no             | yes         |
+| Mirage     | yes        | no             | no          |
