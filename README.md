@@ -24,15 +24,15 @@ To serve our purposes we had to fulfill 9 key requirements
 
 There are various tools today that can perform HTTP simulation (some of the commercial vendors are calling it “service virtualization”). At the time of the creation of Nagual, none of the available tools supported all of the 9 key requirement. Bellow you can find a table comparing all the actively supported open source HTTP simulation tools. In case Naual does not fit your needs, try one of the listed tools.
 
-| Tools      | Standalone | Fake SSL Certs | Transparent | Dynamic Responses | Local Storage | Binary Data | Regex URL Match | R&R Not Mandatory | Start Configured |
-| ---------- | ---------- | -------------- | ----------- | ----------------- | ------------- | ----------- | --------------- | ----------------- | ---------------- |
-| Stubby4J   | yes        | yes            | no          | no                | no            | yes         | yes             | yes               | yes              |
-| WireMock   | yes        | yes            | yes         | no                | no            | yes         | yes             | yes               | yes              |
-| Wilma      | yes        | no             | yes         | no                | yes           | no          | no              | yes               | yes              |
-| soapUI     | yes        | no             | no          | yes               | no            | yes         | no              | yes               | yes              |
-| betamax    | no         | yes            | yes         | no                | no            | no          | no              | no                | yes              |
-| MockServer | yes        | yes            | no          | yes               | no            | yes         | yes             | yes               | yes              |
-| VCR        | no         | yes            | yes         | yes               | no            | no          | yes             | no                | yes              |
-| mounteback | yes        | no             | no          | yes               | yes           | yes         | yes             | yes               | yes              |
-| Hoverfly   | yes        | no             | yes         | yes               | no            | yes         | no              | yes               | yes              |
-| Mirage     | yes        | no             | no          | yes               | no            | yes         | yes             | yes               | no               |
+| Tools      | Standalone | Fake SSL Certs | Transparent | Dynamic Resp. | Local Stor. | Bin. Data | Regex URL | R&R Not Mandatory | Start Configured |
+| ---------- | ---------- | -------------- | ----------- | ------------- | ----------- | --------- | --------- | ----------------- | ---------------- |
+| Stubby4J   | yes        | yes            | no          | no            | no          | yes       | yes       | yes               | yes              |
+| WireMock   | yes        | yes            | yes         | no            | no          | yes       | yes       | yes               | yes              |
+| Wilma      | yes        | no             | yes         | no            | yes         | no        | no        | yes               | yes              |
+| soapUI     | yes        | no             | no          | yes           | no          | yes       | no        | yes               | yes              |
+| betamax    | no         | yes            | yes         | no            | no          | no        | no        | no                | yes              |
+| MockServer | yes        | yes            | no          | yes           | no          | yes       | yes       | yes               | yes              |
+| VCR        | no         | yes            | yes         | yes           | no          | no        | yes       | no                | yes              |
+| mounteback | yes        | no             | no          | yes           | yes         | yes       | yes       | yes               | yes              |
+| Hoverfly   | yes        | no             | yes         | yes           | no          | yes       | no        | yes               | yes              |
+| Mirage     | yes        | no             | no          | yes           | no          | yes       | yes       | yes               | no               |
