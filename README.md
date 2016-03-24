@@ -19,20 +19,20 @@ To serve our purposes we had to fulfill 9 key requirements
 5. **Local Storage**. The simulator should be able to locally store any generated response, so that it can later be retrieved and used for complex, multi-request sequence operations.
 6. **Binary Data**. The simulator should be able to return binary data in the HTTP body - e.g. images, PDF files.
 7. **Regex URL Match**. A request should be able to be flagged for simulation by regex matching.
-8. **R&R Not Mandatory**. The simulator should be able to be configured without the need to capture and replay requests and responses.
+8. **R&R Not Mandatory**. The simulator should be able to be configured without the need to record and replay requests and responses.
 9. **Start Configured**For fast tests (and also to enable parallel execution of tests) the simulator should be able to start fully configured via the command line. It should allow configuration in ways other than API only.
 
 There are various tools today that can perform HTTP simulation (some of the commercial vendors are calling it “service virtualization”). At the time of the creation of Nagual, none of the available tools supported all of the 9 key requirement. Bellow you can find a table comparing all the actively supported open source HTTP simulation tools. In case Naual does not fit your needs, try one of the listed tools.
 
-| Tools      | Standalone | Fake SSL Certs | Transparent | Dynamic Resp. | Local Stor. | Bin. Data | Regex URL | R&R Not Mandatory | Start Configured |
-| ---------- | ---------- | -------------- | ----------- | ------------- | ----------- | --------- | --------- | ----------------- | ---------------- |
-| Stubby4J   | yes        | yes            | no          | no            | no          | yes       | yes       | yes               | yes              |
-| WireMock   | yes        | yes            | yes         | no            | no          | yes       | yes       | yes               | yes              |
-| Wilma      | yes        | no             | yes         | no            | yes         | no        | no        | yes               | yes              |
-| soapUI     | yes        | no             | no          | yes           | no          | yes       | no        | yes               | yes              |
-| betamax    | no         | yes            | yes         | no            | no          | no        | no        | no                | yes              |
-| MockServer | yes        | yes            | no          | yes           | no          | yes       | yes       | yes               | yes              |
-| VCR        | no         | yes            | yes         | yes           | no          | no        | yes       | no                | yes              |
-| mounteback | yes        | no             | no          | yes           | yes         | yes       | yes       | yes               | yes              |
-| Hoverfly   | yes        | no             | yes         | yes           | no          | yes       | no        | yes               | yes              |
-| Mirage     | yes        | no             | no          | yes           | no          | yes       | yes       | yes               | no               |
+| Tools      | Standalone | Fake SSL Certs | Transp. | Dynamic Resp. | Local Stor. | Bin. Data | Regex URL | R&R Not Mandatory | Start Conf. |
+| ---------- | ---------- | -------------- | ------- | ------------- | ----------- | --------- | --------- | ----------------- | ----------- |
+| Stubby4J   | yes        | yes            | no      | no            | no          | yes       | yes       | yes               | yes         |
+| WireMock   | yes        | yes            | yes     | no            | no          | yes       | yes       | yes               | yes         |
+| Wilma      | yes        | no             | yes     | no            | yes         | no        | no        | yes               | yes         |
+| soapUI     | yes        | no             | no      | yes           | no          | yes       | no        | yes               | yes         |
+| betamax    | no         | yes            | yes     | no            | no          | no        | no        | no                | yes         |
+| MockServer | yes        | yes            | no      | yes           | no          | yes       | yes       | yes               | yes         |
+| VCR        | no         | yes            | yes     | yes           | no          | no        | yes       | no                | yes         |
+| mounteback | yes        | no             | no      | yes           | yes         | yes       | yes       | yes               | yes         |
+| Hoverfly   | yes        | no             | yes     | yes           | no          | yes       | no        | yes               | yes         |
+| Mirage     | yes        | no             | no      | yes           | no          | yes       | yes       | yes               | no          |
