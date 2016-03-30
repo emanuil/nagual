@@ -2,6 +2,38 @@
 
 This is a standalone HTTP server created to simulate various responses as if they are returned by a third party web service APIs. For example, the simulator can be configured to act as api.twitter.com or graph.facebook.com without your application knowing the difference. Its primary use is for functional (manual and automated) testing. Its secondary uses are monitoring and performance/stress testing.
 
+## How to start Nagual
+
+1. Install [node.js and npm](https://nodejs.org/en/download/package-manager/)
+2. Clone this repository
+    `git clone https://github.com/emanuil/nagual`
+3. Install the required npm packages
+    `cd nagual && npm install`
+4. Run the simulator
+    `sudo node proxy.js`
+
+You should see the following output
+
+```
+Starting the HTTP(S) protocol simulator...
+Loaded stubs count per host:
+
+c9555.r55.cf2.rackcdn.com: 1
+api.instagram.com: 6
+api.linkedin.com: 4
+api.twitter.com: 12
+blah.com: 0 Transparent mode only!
+cdn2.clouddrive.com: 1
+graph.facebook.com: 32
+identity.api.rackspacecloud.com: 1
+porto.zendesk.com: 4
+storage101.ord1.clouddrive.com: 5
+www.googleapis.com: 5
+
+Listening on port 80
+Listening on port 443
+```
+
 ## Why create it?
 
 If your application uses any external resources, you’re relying on them constantly being online and responsive so that your tests are passing 100%. If the Internet is down, or slow, your tests will fail. If the external service throttles your requests, after you reach the daily limit, your tests will fail. If you have to manually renew expired credentials, your tests will fail. Also note that some of the responses coming from external services cannot be easily triggered. These include internal server errors, timeout even sending mangled data. In short, your high level tests (everything other than unit tests) have lots of reasons of moving parts and thus reasons to fail.
