@@ -5,12 +5,9 @@ This is a standalone HTTP server created to simulate various responses as if the
 ## How to start Nagual
 
 1. Install [node.js and npm](https://nodejs.org/en/download/package-manager/)
-2. Clone this repository
-    `git clone https://github.com/emanuil/nagual`
-3. Install the required npm packages
-    `cd nagual && npm install`
-4. Run the simulator
-    `sudo node proxy.js`
+2. Clone this repository: `git clone https://github.com/emanuil/nagual` (or download the [zip file](https://github.com/emanuil/nagual/archive/master.zip))
+3. Install the required npm packages: `cd nagual && npm install`
+4. Run the simulator: `sudo node proxy.js`
 
 You should see the following output
 
