@@ -2,7 +2,7 @@
 
 This is a standalone HTTP server created to simulate various responses as if they are returned by a third party web service APIs. For example, the simulator can be configured to act as api.twitter.com or graph.facebook.com without your application knowing the difference. Its primary use is for functional (manual and automated) testing. Its secondary uses are monitoring and performance/stress testing.
 
-## How to start Nagual
+## How to install Nagual
 
 1. Install [node.js and npm](https://nodejs.org/en/download/package-manager/)
 2. Clone this repository: `git clone https://github.com/emanuil/nagual` (or download the [zip file](https://github.com/emanuil/nagual/archive/master.zip))
@@ -31,14 +31,15 @@ Listening on port 80
 Listening on port 443
 ```
 
+In order to start using the simualtor you need to peform the two steps in bold bellow.
 
 ## Routing traffic through Nagual
 
-After Nagual has started its time to route your application traffic through it. Depending on how your application is configured there are couple of ways to do this. The easiest is to edit /etc/hosts file on your application server to point the host you'd like to simulate.
+After Nagual has started its time to route your application traffic through it. Depending on how your application is configured there are couple of ways to do this. The easiest is to **add an entry to /etc/hosts file on your application server to redirect all traffic to the simulator**.
 
-For example if 192.168.8.21 is the IP address where Nagual is running and you want to simulate an external service host service.example.com, you should add the following line to `/etc/hosts` file on the server thats running your applications.
+For example if 192.168.8.21 is the IP address where Nagual is running and you want to simulate an external service host api.twitter.com, you should add the following line to `/etc/hosts` file on the server thats running your applications.
 
-`192.168.8.21 service.example.com`
+`192.168.8.21 api.twitter.com`
 
 This will route all the traffic intended to the external service, first through the simulator. Depending on how you setup Naual rules, the requests will either be simulated or forwarded to the real service.
 
@@ -49,14 +50,14 @@ If for some reason you can not edit `/etc/hosts`, your options would be (dependi
 * to edit the DNS records
 
 
-The main point is to ultimately redirect all the HTTP traffic that you need to simulate to Nagual
+The main point is to ultimately redirect all the HTTP traffic that you need to simulate to Nagual.
 
 ## Handling HTTPS traffic
 Most of the interesting external services run over HTTPS. Your code (or the code in the 3rd party libraries) used to connect to the external services has SSL server verification enabled. On every connection, your application checks if it talks to the real api.twitter.com, instead of any other server with self signed SSL certificate. This way your app is making sure that it is not susceptible to [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack). Nagual uses the same technique to do good. 
 
-When Naual starts, it auto generates fake SSL certificate issued to api.twitter.com. However, it is signed by root certificate that is itself self-signed (not signed by any of the built in [root CAs in your OS](https://www.globalsign.com/en/ssl-information-center/what-are-certification-authorities-trust-hierarchies/)). The server SSL verification would still fail at this point. 
+When Nagual starts, it auto generates fake SSL certificate issued to api.twitter.com. However, it is signed by root certificate that is itself self-signed (not signed by any of the built in [root CAs in your OS](https://www.globalsign.com/en/ssl-information-center/what-are-certification-authorities-trust-hierarchies/)). The server SSL verification would still fail at this point. 
 
-In order to enable HTTPS traffic simulation you need to do one thing. Install Nagual’s root certificate as trusted in your OS. Then your app will not complain that the certificate issued to api.twitter.com is signed by unknown authority. 
+In order to enable HTTPS traffic simulation you need to do one thing. **Install Nagual’s root certificate as trusted on your app OS**. Then your app will not complain that the certificate issued to api.twitter.com is signed by unknown authority. 
 
 Nagual includes a default root certificate `root_certificate/rootCA.crt`, that you can use it to test with. However if you’re serious about security you should generate and use your own, just put it in `root_certificate` directory (there need to be two files rootCA.crt and rootCA.key).
 
@@ -64,7 +65,7 @@ Here is how to install the root certificate (`root_certificate/rootCA.crt`) as t
 
 If your application is Java based you need to install the root certificate in the [Java keystore](https://www.sslshopper.com/article-most-common-java-keytool-keystore-commands.html).
 
-## Why create Nagual it?
+## Why create Nagual?
 
 If your application uses any external resources, you’re relying on them constantly being online and responsive so that your tests are passing 100%. If the Internet is down, or slow, your tests will fail. If the external service throttles your requests, after you reach the daily limit, your tests will fail. If you have to manually renew expired credentials, your tests will fail. Also note that some of the responses coming from external services cannot be easily triggered. These include internal server errors, timeout even sending mangled data. In short, your high level tests (everything other than unit tests) have lots of reasons of moving parts and thus reasons to fail.
 
