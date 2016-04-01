@@ -36,13 +36,13 @@ Listening on port 443
 
 After Nagual has started its time to route your application traffic through it. Depending on how your application is configured there are couple of ways to do this. The easiest is to edit /etc/hosts file on your application server to point the host you'd like to simulate.
 
-For example if 192.168.8.21 is the IP address where Nagual is running and you want to simulate an external service host service.example.com, you should add the following line to /etc/hosts file on the server thats running your applications.
+For example if 192.168.8.21 is the IP address where Nagual is running and you want to simulate an external service host service.example.com, you should add the following line to `/etc/hosts` file on the server thats running your applications.
 
-192.168.8.21 service.example.com
+`192.168.8.21 service.example.com`
 
 This will route all the traffic intended to the external service, first through the simulator. Depending on how you setup Naual rules, the requests will either be simulated or forwarded to the real service.
 
-If for some reason you can not edit /etc/hosts, your options would be (depending on the architecture of your application):
+If for some reason you can not edit `/etc/hosts`, your options would be (depending on the architecture of your application):
 * to edit the DNS records
 * to edit your application code
 * to edit a configuration in your database
