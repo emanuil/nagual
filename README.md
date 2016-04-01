@@ -31,6 +31,24 @@ Listening on port 80
 Listening on port 443
 ```
 
+
+## Routing traffic through Nagual
+
+After Nagual has started its time to route your application traffic through it. Depending on how your application is configured there are couple of ways to do this. The easiest is to edit /etc/hosts file on your application server to point the host you'd like to simulate.
+
+For example if 192.168.8.21 is the IP address where Nagual is running and you want to simulate an external service host service.example.com, you should add the following line to /etc/hosts file on the server thats running your applications.
+
+192.168.8.21 service.example.com
+
+This will route all the traffic intended to the external service, first through the simulator. Depending on how you setup Naual rules, the requests will either be simulated or forwarded to the real service.
+
+If for some reason you can not edit /etc/hosts, your options would be (depending on the architecture of your application):
+* to edit the DNS records
+* to edit your application code
+* to edit a configuration in your database
+
+The main point is to ultimately redirect all the HTTP traffic that you need to simulate to Nagual
+
 ## Why create it?
 
 If your application uses any external resources, you’re relying on them constantly being online and responsive so that your tests are passing 100%. If the Internet is down, or slow, your tests will fail. If the external service throttles your requests, after you reach the daily limit, your tests will fail. If you have to manually renew expired credentials, your tests will fail. Also note that some of the responses coming from external services cannot be easily triggered. These include internal server errors, timeout even sending mangled data. In short, your high level tests (everything other than unit tests) have lots of reasons of moving parts and thus reasons to fail.
