@@ -49,7 +49,20 @@ If for some reason you can not edit `/etc/hosts`, your options would be (dependi
 
 The main point is to ultimately redirect all the HTTP traffic that you need to simulate to Nagual
 
-## Why create it?
+## Handling HTTPS traffic
+Most of the interesting external services run over HTTPS. Your code (or the code in the 3rd party libraries) used to connect to the external services has SSL server verification enabled. On every connection, your application checks if it talks to the real api.twitter.com, instead of any other server with self signed SSL certificate. This way your app is making sure that it is not susceptible to [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack). Nagual uses the same technique to do good. 
+
+When Naual starts, it auto generates fake SSL certificate issued to api.twitter.com. However, it is signed by root certificate that is itself self-signed (not signed by any of the built in [root CAs in your OS](https://www.globalsign.com/en/ssl-information-center/what-are-certification-authorities-trust-hierarchies/)). The server SSL verification would still fail at this point. 
+
+In order to enable HTTPS traffic simulation you need to do one thing. Install Nagual’s root certificate as trusted in your OS. Then your app will not complain that the certificate issued to api.twitter.com is signed by unknown authority. 
+
+Nagual includes a default root certificate `root_certificate/rootCA.crt`, that you can use it to test with. However if you’re serious about security you should generate and use your own, just put it in `root_certificate` directory (there need to be two files rootCA.crt and rootCA.key).
+
+Here is how to install the root certificate (`root_certificate/rootCA.crt`) as trusted in [your OS](http://kb.kerio.com/product/kerio-connect/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html).
+
+If your application is Java based you need to install the root certificate in the [Java keystore](https://www.sslshopper.com/article-most-common-java-keytool-keystore-commands.html).
+
+## Why create Nagual it?
 
 If your application uses any external resources, you’re relying on them constantly being online and responsive so that your tests are passing 100%. If the Internet is down, or slow, your tests will fail. If the external service throttles your requests, after you reach the daily limit, your tests will fail. If you have to manually renew expired credentials, your tests will fail. Also note that some of the responses coming from external services cannot be easily triggered. These include internal server errors, timeout even sending mangled data. In short, your high level tests (everything other than unit tests) have lots of reasons of moving parts and thus reasons to fail.
 
