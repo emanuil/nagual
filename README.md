@@ -43,9 +43,11 @@ For example if 192.168.8.21 is the IP address where Nagual is running and you wa
 This will route all the traffic intended to the external service, first through the simulator. Depending on how you setup Naual rules, the requests will either be simulated or forwarded to the real service.
 
 If for some reason you can not edit `/etc/hosts`, your options would be (depending on the architecture of your application):
-* to edit the DNS records
 * to edit your application code
+* to edit a config file
 * to edit a configuration in your database
+* to edit the DNS records
+
 
 The main point is to ultimately redirect all the HTTP traffic that you need to simulate to Nagual
 
