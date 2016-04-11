@@ -136,7 +136,11 @@ this.token = {
 };
 ```    
 
-* `this.getResponse()` If all of the above stub properties match, this function is called to generate the fake response. It returns an object with one or more of the following properties: `body` (the response body, most of the time you'll only need to return only this property), `statusCode` (if you don't set it, it's 200 by default), `statusMessage` (if you don't set it, it's 'OK' by default) and `headers` (an object that defines one or more custom headers to be returned).
+* `this.getResponse()` If all of the above stub properties match, this function is called to generate the fake response. It returns an object with one or more of the following properties:
+  * `body` the response body, most of the time you'll only need to return only this property
+  * `statusCode` if you don't set it, it's 200 by default
+  * `statusMessage` if you don't set it, it's 'OK' by default
+  * `headers` an object that defines one or more custom headers to be returned
 
 ** When the `method`, `url` and the `token` properties defined in the stub _all_ match to the incoming request, then instead of redirecting to the real service, Nagual generates the response by calling `this.getResponse()` function. If one or more of the `method`, `url` or `token` properties do not match, then the request is forwared to the real service. The real response is forwarded back unconditionally. **
 
