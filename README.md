@@ -65,6 +65,82 @@ Here is how to install the root certificate (`root_certificate/rootCA.crt`) as t
 
 If your application is Java based you need to install the root certificate in the [Java keystore](https://www.sslshopper.com/article-most-common-java-keytool-keystore-commands.html).
 
+## A Simple Stub
+The simplest possible stub looks like this:
+
+```
+module.exports = function() {
+    this.method = 'GET';
+    this.url = '/twitter/:id';
+
+    this.token = {
+        string: 'test-token',
+        location: 'url'
+    };
+
+    this.getResponse = function() {
+
+        return {
+            'body': JSON.stringify({"name":"John Doe"})
+        };
+    };
+};
+```
+Assume that there is an API located here `example.com/twitter/:id`. When called with GET request it returns the name associated with the twitter id from the URL (:id can be random integer). The curl request to call this API might be:
+
+`curl https://example.com/twitter/71231348&token=test-token`
+
+or
+
+`curl https://example.com/twitter/98125345&token=test-token`
+
+Nagual will catch these request and will return `{"name":"John Doe"}` in the body.
+
+## Stub Location
+
+Stubs should be located in the `stubs` directory. The next sub directory should be either `http` or `https`. The next sub directory is name of the server (exactly the same as in the request URL). Next comes the stub file name. It can be free style, as long as it ends with `.js`. However using a convention is really helpful - e.g. `http_verb_request_url.js`. For example, the simple stub declared above should be located here:
+
+`stubs/https/example.com/get_twitter_id.js`
+
+## Stub Properties
+
+
+The stub follows the standard Node.js modules structure, and is executable JavaScript code that provides great flexibility. It has 4 mandatory properties that have to be defined:
+
+* `this.method` The HTTP verb used in the request. It's usually GET, POST, DELETE, HEAD or OPTIONS. Case insensitive.
+
+* `this.url` This is the URL which is to be matched. It can be defined as string or as JavaScript regular expression. Important: The URL matches only the part after the host and before the arguments (separated by `?`). For example, if the request has this full URL:
+
+  `https://example.com/twitter/1234874?token=test-token-random-stuff`
+  
+  then 
+  
+  `this.url` matches this part only `/twitter/1234874`
+  
+  Three of the most used regular expressions to match RESTful stul APIs can be used:
+  `:string` matches a random sting, e.g. 'KKlkdjUjasd' 
+  `:number` matches a random number, e.g. '98129830123'
+  `:id` matched any combination of all printable characters, e.g. 'token-123-abc-456'
+  
+  So if you want to match the above URL you can do it in two ways:
+  `this.url = '/twitter/:number'`
+  `this.url = '/twitter/:id'`
+  
+  If this does not suite you, you can always write a custom [JavaScript Regex](https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions)
+
+* `this.token` This is the string that needs to be present in the specified location (url, headers or body). If you do not want to use it you can effective disable it, by matching all the URLS:
+```
+this.token = {
+    string: '',
+    location: 'url'
+};
+```    
+
+* `this.getResponse()` If all of the above stub properties match, this function is called to generate the fake response. It returns an object with one or more of the following properties: `body` (the response body, most of the time you'll only need to return only this property), `statusCode` (if you don't set it, it's 200 by default), `statusMessage` (if you don't set it, it's 'OK' by default) and `headers` (an object that defines one or more custom headers to be returned).
+
+** When the `method`, `url` and the `token` properties defined in the stub _all_ match to the incoming request, then instead of redirecting to the real service, Nagual generates the response by calling `this.getResponse()` function. If one or more of the `method`, `url` or `token` properties do not match, then the request is forwared to the real service. The real response is forwarded back unconditionally. **
+
+
 ## Why create Nagual?
 
 If your application uses any external resources, you’re relying on them constantly being online and responsive so that your tests are passing 100%. If the Internet is down, or slow, your tests will fail. If the external service throttles your requests, after you reach the daily limit, your tests will fail. If you have to manually renew expired credentials, your tests will fail. Also note that some of the responses coming from external services cannot be easily triggered. These include internal server errors, timeout even sending mangled data. In short, your high level tests (everything other than unit tests) have lots of reasons of moving parts and thus reasons to fail.
