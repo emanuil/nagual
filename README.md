@@ -117,7 +117,7 @@ The stub follows the standard Node.js modules structure, and is executable JavaS
   
   `this.url` matches this part only `/twitter/1234874`
   
-  Three of the most used regular expressions to match RESTful stul APIs can be used:
+  Three of the most used regular expressions to match RESTful stule APIs can be used:
     * `:string` matches a random sting, e.g. 'KKlkdjUjasd' 
     * `:number` matches a random number, e.g. '98129830123'
     * `:id` matched any combination of all printable characters, e.g. 'token-123-abc-456'
