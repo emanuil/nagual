@@ -123,8 +123,8 @@ The stub follows the standard Node.js modules structure, and is executable JavaS
     * `:id` matched any combination of all printable characters, e.g. 'token-123-abc-456'
   
   So if you want to match the above URL you can do it in two ways:
-  `this.url = '/twitter/:number'`
-  `this.url = '/twitter/:id'`
+    * `this.url = '/twitter/:number'`
+    * `this.url = '/twitter/:id'`
   
   If this does not suite you, you can always write a custom [JavaScript Regex](https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions)
 
