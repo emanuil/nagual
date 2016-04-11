@@ -142,7 +142,7 @@ this.token = {
   * `statusMessage` if you don't set it, it's 'OK' by default
   * `headers` an object that defines one or more custom headers to be returned
 
-** When the `method`, `url` and the `token` properties defined in the stub _all_ match to the incoming request, then instead of redirecting to the real service, Nagual generates the response by calling `this.getResponse()` function. If one or more of the `method`, `url` or `token` properties do not match, then the request is forwared to the real service. The real response is forwarded back unconditionally. **
+**When the `method`, `url` and the `token` properties defined in the stub _all_ match to the incoming request, then instead of redirecting to the real service, Nagual generates the response by calling `this.getResponse()` function. If one or more of the `method`, `url` or `token` properties do not match, then the request is forwared to the real service. The real response is forwarded back unconditionally.**
 
 
 ## Why create Nagual?
