@@ -179,3 +179,8 @@ There are various tools today that can perform HTTP simulation (some of the comm
 | [mounteback](http://www.mbtest.org) | yes        | no             | no      | yes           | yes         | yes       | yes       | yes               | yes         |
 | [Hoverfly](https://github.com/SpectoLabs/hoverfly)   | yes        | no             | yes     | yes           | no          | yes       | no        | yes               | yes         |
 | [Mirage](https://github.com/SpectoLabs/mirage)     | yes        | no             | no      | yes           | no          | yes       | yes       | yes               | no          |
+
+
+## Block Diagram
+
+![How Nagual Operates](/screenshots/block_diagram.png?raw=true)
