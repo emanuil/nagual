@@ -17,6 +17,10 @@ function getTwitterDate() {
     return dateFormat(new Date(), 'ddd mmm dd HH:MM:ss Z yyyy');
 }
 
+function getUTCDateTime() {
+    return dateFormat(new Date(), 'isoUtcDateTime');
+}
+
 function getFacebookDate() {
     var day = dateFormat(new Date(), 'yyyy-mm-dd');
     var hour = dateFormat(new Date(), 'HH:MM:ss');
@@ -39,10 +43,17 @@ function getSentence() {
     return faker.lorem.sentence();
 }
 
+function getText() {
+    return faker.lorem.text();
+}
+
 function getImageUrl() {
     return faker.image.imageUrl();
 }
 
+function getCompanyName() {
+    return faker.company.companyName();
+}
 
 function getUrl() {
     return faker.internet.url();
@@ -52,12 +63,15 @@ module.exports.getInteger = getInteger;
 module.exports.getString = getString;
 module.exports.getCurrentDate = getCurrentDate;
 module.exports.getTwitterDate = getTwitterDate;
+module.exports.getUTCDateTime = getUTCDateTime;
 module.exports.getFacebookDate = getFacebookDate;
 module.exports.getCurrentTimestamp = getCurrentTimestamp;
 module.exports.getUsername = getUsername;
 module.exports.getName = getName;
 module.exports.getSentence = getSentence;
+module.exports.getText = getText;
 module.exports.getImageUrl = getImageUrl;
+module.exports.getCompanyName = getCompanyName;
 module.exports.getUrl = getUrl;
 
 
