@@ -147,19 +147,19 @@ Monitoring is the second type of usage that Nagual was designed for. This can be
 
 Since all the HTTP traffic passes through Nagual it can easily be monitored. Nagual supports `-s statsd_server` command line switch in case you want to log the number of requests to your StatsD server and later to visualize them. Out of the box, Nagual provides four types of statistics for the passing HTTP traffic.
 
-1. Total HTTP requests passing through Nagual for one hour. Increased number of requests after code push might indicate a problem. It may even cause the external service to throttle you, or to increase your spending. The graph bellow show a peak around midnight, thats when a lot of off-hours jobs are scheduled for.
+* Total HTTP requests passing through Nagual for one hour. Increased number of requests after code push might indicate a problem. It may even cause the external service to throttle you, or to increase your spending. The graph bellow show a peak around midnight, thats when a lot of off-hours jobs are scheduled for.
 
 ![The number HTTP requests (per hour) for a day](/screenshots/total_calls.png?raw=true)
  
-2. The number of 4xx errors. This usually means that your application is not configured correctly when communicating to the external services. The graph bellow shows a moment when we calling a Facebook API with wrong parameters.
+* The number of 4xx errors. This usually means that your application is not configured correctly when communicating to the external services. The graph bellow shows a moment when we calling a Facebook API with wrong parameters.
 
 ![The number of 4xx errors for a day](/screenshots/4xx_errors.png?raw=true)
 
-3. The number of 500 errors. This indicates how stable is the external service that you're integrated with. Contrary to what you might think, we see more 500 errors coming from Google+ than any other major social network.
+* The number of 500 errors. This indicates how stable is the external service that you're integrated with. Contrary to what you might think, we see more 500 errors coming from Google+ than any other major social network.
 
 ![The number of 500 errors for a day](/screenshots/500_errors.png?raw=true)
 
-4. The number of timeouts. A timeout means that your software sends a requests, but did not hear back from the external service for a given period of time. This might indicate failure on the external service side. Or it might be related to the internet connectivity. These days, we see more timeouts from Twitter than from any other major social network.
+* The number of timeouts. A timeout means that your software sends a requests, but did not hear back from the external service for a given period of time. This might indicate failure on the external service side. Or it might be related to the internet connectivity. These days, we see more timeouts from Twitter than from any other major social network.
 
 ![The number of timeouts for a day](/screenshots/timeouts.png?raw=true)
 
