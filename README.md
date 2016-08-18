@@ -198,7 +198,7 @@ There are various tools today that can perform HTTP simulation (some of the comm
 | [MockServer](http://www.mock-server.com) | yes        | yes            | no      | yes           | no          | yes       | yes       | yes               | yes         |
 | [VCR](https://github.com/vcr/vcr)        | no         | yes            | yes     | yes           | no          | no        | yes       | no                | yes         |
 | [mounteback](http://www.mbtest.org) | yes        | no             | no      | yes           | yes         | yes       | yes       | yes               | yes         |
-| [Hoverfly](https://github.com/SpectoLabs/hoverfly)   | yes        | no             | yes     | yes           | no          | yes       | no        | yes               | yes         |
+| [Hoverfly](https://github.com/SpectoLabs/hoverfly)   | yes        | yes             | yes     | yes           | yes          | yes       | no        | yes               | yes         |
 | [Mirage](https://github.com/SpectoLabs/mirage)     | yes        | no             | no      | yes           | no          | yes       | yes       | yes               | no          |
 
 
