@@ -1,5 +1,6 @@
 #!/bin/sh
 
+set -e
 # check the sourse against eslint rules
 ./node_modules/eslint/bin/eslint.js -c tests/.eslintrc.json .
 
