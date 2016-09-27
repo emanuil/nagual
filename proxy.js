@@ -17,7 +17,6 @@ if(process.argv.indexOf('-h') !== -1) {
     process.exit();
 }
 
-
 // no console output with -q
 if(process.argv.indexOf('-q') !== -1) {
     global.quiet = true;
@@ -27,7 +26,14 @@ if(process.argv.indexOf('-q') !== -1) {
 // log to statsd -s server.name
 if(process.argv.indexOf('-s') !== -1) {
     i = process.argv.indexOf('-s');
+
     global.statsDClient = new statsD({host: process.argv[i + 1]});
+    global.statsDClient.increment('dummy_stat');
+
+    global.statsDClient.socket.on('error', function(error) {
+        global.statsDClient = false;
+        console.error("\nError when testing statsd connection. Statsd will remain disabled...\n", error, "\n");
+    });
 }
 
 global.serversToStub = loadStubbedServers('stubs');
