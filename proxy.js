@@ -32,7 +32,7 @@ if(process.argv.indexOf('-s') !== -1) {
 
     global.statsDClient.socket.on('error', function(error) {
         global.statsDClient = false;
-        console.error("\nError when testing statsd connection. Statsd will remain disabled...\n", error, "\n");
+        console.error('\nError when testing statsd connection. Statsd will remain disabled...\n', error, '\n');
     });
 }
 
