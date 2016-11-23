@@ -22,16 +22,15 @@ function loadStubRules() {
 
     var stubRules = {};
 
+    var storage;
+    storage = new nodeCache();
+
     Object.keys(global.serversToStub).forEach(function(protocol) {
         global.serversToStub[protocol].forEach(function (server) {
 
-            var storage;
-
             var stubFiles = module.exports.getStubFiles(protocol, server);
 
-
             stubRules[server] = [];
-            storage = new nodeCache();
 
             stubFiles.forEach(function (stubFile) {
 
