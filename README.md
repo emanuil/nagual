@@ -4,6 +4,8 @@
 
 This is a standalone HTTP server created to simulate various responses as if they are returned by a third party web service APIs. For example, the simulator can be configured to act as api.twitter.com or graph.facebook.com without your application knowing the difference. Its primary use is for functional (manual and automated) testing. Its secondary uses are monitoring and performance/stress testing.
 
+Here is a [presentation](https://speakerdeck.com/emanuil) about Nagual, that I gave at [Agile Testing Days 2016](http://www.agiletestingdays.com) conference.
+
 ![Setup](/screenshots/setup.png?raw=true)
 
 ## How to install Nagual
