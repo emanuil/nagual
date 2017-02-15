@@ -61,7 +61,7 @@ The main point is to ultimately redirect all the HTTP traffic that you need to s
 ## Screen Capture 
 Since all the traffic passes through Nagual, you can monitor it in real time. This traffic is usually encrypted and visible only to the client and to the server. Since Nagual acts are MiTM proxy, it can see and modify everything.
 
-![](/screenshots/console.png?raw=true)
+![](/screenshots/console.gif?raw=true)
 
 
 ## Handling HTTPS traffic
