@@ -58,6 +58,12 @@ If for some reason you can not edit `/etc/hosts`, your options would be (dependi
 
 The main point is to ultimately redirect all the HTTP traffic that you need to simulate to Nagual.
 
+## Screen Capture 
+Since all the traffic passes through Nagual, you can monitor it in real time. This traffic is usually encrypted and visible only to the client and to the server. Since Nagual acts are MiTM proxy, it can see and modify everything.
+
+![](/screenshots/console.png?raw=true)
+
+
 ## Handling HTTPS traffic
 Most of the interesting external services run over HTTPS. Your code (or the code in the 3rd party libraries) used to connect to the external services has SSL server verification enabled. On every connection, your application checks if it talks to the real api.twitter.com, instead of any other server with self signed SSL certificate. This way your app is making sure that it is not susceptible to [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack). Nagual uses the same technique to do good. 
 
