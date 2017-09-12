@@ -47,7 +47,7 @@ For example if 192.168.8.21 is the IP address where Nagual is running and you wa
 
 `192.168.8.21 api.twitter.com`
 
-This will route all the traffic intended to the external service, first through the simulator. Depending on how you setup Naual rules, the requests will either be simulated or forwarded to the real service.
+This will route all the traffic intended to the external service, first through the simulator. Depending on how you setup Nagual rules, the requests will either be simulated or forwarded to the real service.
 
 If for some reason you can not edit `/etc/hosts`, your options would be (depending on the architecture of your application):
 * to edit your application code
@@ -194,7 +194,7 @@ To serve our purposes we had to fulfill 9 key requirements
 8. **R&R Not Mandatory**. The simulator should be able to be configured without the need to record and replay requests and responses.
 9. **Start Configured**. For fast tests (and also to enable parallel execution of tests) the simulator should be able to start fully configured via the command line. It should allow configuration in ways other than API only.
 
-There are various tools today that can perform HTTP simulation (some of the commercial vendors are calling it “service virtualization”). At the time of the creation of Nagual, none of the available tools supported all of the 9 key requirement (as of May 2016). Bellow you can find a table comparing all the actively supported open source HTTP simulation tools. In case Naual does not fit your needs, try one of the listed tools.
+There are various tools today that can perform HTTP simulation (some of the commercial vendors are calling it “service virtualization”). At the time of the creation of Nagual, none of the available tools supported all of the 9 key requirement (as of May 2016). Bellow you can find a table comparing all the actively supported open source HTTP simulation tools. In case Nagual does not fit your needs, try one of the listed tools.
 
 | Tools      | Standalone | Fake SSL Certs | Transp. | Dynamic Resp. | Local Stor. | Bin. Data | Regex URL | R&R Not Mandatory | Start Conf. |
 | ---------- | ---------- | -------------- | ------- | ------------- | ----------- | --------- | --------- | ----------------- | ----------- |
@@ -205,7 +205,7 @@ There are various tools today that can perform HTTP simulation (some of the comm
 | [betamax](https://github.com/betamaxteam/betamax)    | no         | yes            | yes     | no            | no          | no        | no        | no                | yes         |
 | [MockServer](http://www.mock-server.com) | yes        | yes            | no      | yes           | no          | yes       | yes       | yes               | yes         |
 | [VCR](https://github.com/vcr/vcr)        | no         | yes            | yes     | yes           | no          | no        | yes       | no                | yes         |
-| [mounteback](http://www.mbtest.org) | yes        | no             | no      | yes           | yes         | yes       | yes       | yes               | yes         |
+| [Mountebank](http://www.mbtest.org) | yes        | no             | no      | yes           | yes         | yes       | yes       | yes               | yes         |
 | [Hoverfly](https://github.com/SpectoLabs/hoverfly)   | yes        | yes             | yes     | yes           | yes          | yes       | no        | yes               | yes         |
 | [Mirage](https://github.com/SpectoLabs/mirage)     | yes        | no             | no      | yes           | no          | yes       | yes       | yes               | no          |
 
