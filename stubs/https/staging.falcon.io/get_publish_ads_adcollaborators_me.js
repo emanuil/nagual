@@ -3,8 +3,8 @@ module.exports = function() {
     this.url = '/publish/ads/adcollaborators/me';
 
     this.token = {
-        string: 'test ad account',
-        location: 'body'
+        string: '/publish/ads/adcollaborators/me',
+        location: 'url'
     };
 
     this.getResponse = function(request) {
