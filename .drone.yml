@@ -13,6 +13,7 @@ pipeline:
       branch:
         - master
 
+
   notify:
     image: plugins/slack
     webhook: https://hooks.slack.com/services/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
