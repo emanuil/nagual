@@ -1,0 +1,30 @@
+pipeline:
+
+  build-container:
+    image: plugins/docker
+    repo: docker.flcn.io/simulator/nagual
+    registry: docker.flcn.io
+    tags:
+      - latest
+      - ${DRONE_BUILD_NUMBER}-${DRONE_COMMIT_SHA:0:8}-${DRONE_BRANCH}
+    secrets: [ docker_username, docker_password ]
+    when:
+      event: push
+      branch:
+        - master
+
+  notify:
+    image: plugins/slack
+    webhook: https://hooks.slack.com/services/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
+    channel: qa-automation-builds
+    username: drone
+    template: >
+      {{#success build.status}}
+        build FalconSocial/nagual/${DRONE_BUILD_NUMBER}-${DRONE_COMMIT_SHA:0:8} succeeded. Good job, ${CI_COMMIT_AUTHOR_NAME}. Commit message is - "${CI_COMMIT_MESSAGE}"
+      {{else}}
+        build FalconSocial/nagual/${DRONE_BUILD_NUMBER}-${DRONE_COMMIT_SHA:0:8} failed. ${CI_COMMIT_AUTHOR_NAME}, fix me please. Commit message is - "${CI_COMMIT_MESSAGE}"
+      {{/success}}
+    when:
+      event: push
+      branch: master
+      status: [ success, failure ]
