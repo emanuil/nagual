@@ -17,6 +17,7 @@
             "always"
         ],
         "no-console": 0,
+        "no-useless-escape": 0,
 
         "callback-return": 2,
         "no-mixed-requires": 2,
